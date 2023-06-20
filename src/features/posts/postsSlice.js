@@ -115,8 +115,9 @@ const postsSlice = createSlice({
 })
 
 export const postsSelector = postsAdapter.getSelectors((state) => state.posts)
+export const {selectAll} = postsAdapter.getSelectors((state) => state.posts)
 
-const allposts = (state) => state.posts.posts
+const allposts = (state) => selectAll(state)
 
 export const selectPostByUser = createSelector(
   [allposts, (state, userId) => userId],

@@ -1,7 +1,7 @@
 import React, { useEffect } from "react"
 import { useParams, useNavigate } from "react-router-dom"
 import { useSelector, useDispatch } from "react-redux"
-import { updatePost, deletePost } from "./postsSlice"
+import { updatePost, deletePost, postsSelector } from "./postsSlice"
 import { useState } from "react"
 
 const EditPostPage = () => {
@@ -9,11 +9,11 @@ const EditPostPage = () => {
   const { postId } = useParams()
   const [requestStatus, setRequestStatus] = useState("idle")
   const dispatch = useDispatch()
-  const PostById = useSelector((state) => {
-    return state.posts.posts.find((x) => x.id == Number(postId))
-  })
+  const PostById = useSelector((state) =>
+    postsSelector.selectById(state, postId)
+  )
   const status = useSelector((state) => state.posts.status)
-  console.log(status)
+  // console.log(status)
   // console.log(PostById)
   const [post, setPost] = useState({
     title: "",
@@ -47,7 +47,7 @@ const EditPostPage = () => {
   }
 
   useEffect(() => {
-    console.log(PostById)
+    // console.log(PostById)
     if (PostById) {
       setPost({
         userId: PostById.userId,

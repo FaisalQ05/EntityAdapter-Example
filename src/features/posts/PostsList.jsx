@@ -9,15 +9,15 @@ const PostsList = () => {
   const posts = useSelector((state) => state.posts)
   // console.log("status : ", postsStatus)
   // console.log("error : ", error)
-  console.log("posts list view Posts : ", posts)
+//   console.log("posts list view Posts : ", posts)
 
   const orderedPostIds = useSelector((state) => postsSelector.selectIds(state))
   const selectTotal = useSelector((state) => postsSelector.selectTotal(state))
   const selectEntities = useSelector((state) =>
     postsSelector.selectEntities(state)
   )
-  console.log(orderedPostIds)
-  console.log("selectTotal :  ", selectTotal)
+//   console.log(orderedPostIds)
+//   console.log("selectTotal :  ", selectTotal)
 
   let content
   if (postsStatus === "loading") {
